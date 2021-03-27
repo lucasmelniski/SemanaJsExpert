@@ -3,6 +3,6 @@ export const constants = {
     MESSAGE: "message",
     NEW_USER_CONNECTED: "newUserConnected",
     DISCONNECT_USER: "disconnectUser",
-    UPDATE_USER: "updateUsers",
+    UPDATE_USERS: "updateUsers",
   },
 };

@@ -16,11 +16,11 @@ export default class TerminalController {
   }
   #onInputReceived(eventEmitter) {
     return function () {
-      const message = this.getValue();
-      console.log(message);
-      this.clearValue();
-    };
-  }
+        const message = this.getValue()
+        eventEmitter.emit(constants.events.app.MESSAGE_SENT, message)
+        this.clearValue()
+    }
+}
 
   #onMessageReceived({ screen, chat }) {
     return (msg) => {
@@ -77,70 +77,71 @@ export default class TerminalController {
     components.input.focus();
     components.screen.render();
 
-    eventEmitter.emit(constants.events.app.ACTIVITYLOG_UPDATED, "Lucas entrou");
-    eventEmitter.emit(
-      constants.events.app.ACTIVITYLOG_UPDATED,
-      "Melissa entrou"
-    );
-    eventEmitter.emit(
-      constants.events.app.ACTIVITYLOG_UPDATED,
-      "Kit Kat entrou"
-    );
-    eventEmitter.emit(
-      constants.events.app.ACTIVITYLOG_UPDATED,
-      "Panqueca entrou"
-    );
-    setTimeout(() => {
-      eventEmitter.emit(
-        constants.events.app.ACTIVITYLOG_UPDATED,
-        "Winky entrou"
-      );
-      eventEmitter.emit(constants.events.app.MESSAGE_RECEIVED, {
-        userName: "Winky",
-        message: "MEEEEEEEEAWWWWWW",
-      });
-    }, 6000);
-    eventEmitter.emit(constants.events.app.STATUS_UPDATED, [
-      "Lucas",
-      "Melissa",
-      "Panqueca",
-      "Kit Kat",
-    ]);
-    setTimeout(() => {
-      eventEmitter.emit(constants.events.app.MESSAGE_RECEIVED, {
-        userName: "Lucas",
-        message: "Mensagem",
-      });
-      eventEmitter.emit(constants.events.app.MESSAGE_RECEIVED, {
-        userName: "Melissa",
-        message: "Mensagem",
-      });
-      eventEmitter.emit(constants.events.app.MESSAGE_RECEIVED, {
-        userName: "Kit Kat",
-        message: "Miau",
-      });
-      eventEmitter.emit(constants.events.app.MESSAGE_RECEIVED, {
-        userName: "Panqueca",
-        message: "Miau",
-      });
-    }, 2000);
-    setTimeout(() => {
-      eventEmitter.emit(constants.events.app.MESSAGE_RECEIVED, {
-        userName: "Lucas",
-        message: "Mensagem",
-      });
-      eventEmitter.emit(constants.events.app.MESSAGE_RECEIVED, {
-        userName: "Melissa",
-        message: "Mensagem",
-      });
-      eventEmitter.emit(constants.events.app.MESSAGE_RECEIVED, {
-        userName: "Kit Kat",
-        message: "Miau",
-      });
-      eventEmitter.emit(constants.events.app.MESSAGE_RECEIVED, {
-        userName: "Panqueca",
-        message: "Miau",
-      });
-    }, 4000);
+
+    // eventEmitter.emit(constants.events.app.ACTIVITYLOG_UPDATED, "Lucas entrou");
+    // eventEmitter.emit(
+    //   constants.events.app.ACTIVITYLOG_UPDATED,
+    //   "Melissa entrou"
+    // );
+    // eventEmitter.emit(
+    //   constants.events.app.ACTIVITYLOG_UPDATED,
+    //   "Kit Kat entrou"
+    // );
+    // eventEmitter.emit(
+    //   constants.events.app.ACTIVITYLOG_UPDATED,
+    //   "Panqueca entrou"
+    // );
+    // setTimeout(() => {
+    //   eventEmitter.emit(
+    //     constants.events.app.ACTIVITYLOG_UPDATED,
+    //     "Winky entrou"
+    //   );
+    //   eventEmitter.emit(constants.events.app.MESSAGE_RECEIVED, {
+    //     userName: "Winky",
+    //     message: "MEEEEEEEEAWWWWWW",
+    //   });
+    // }, 6000);
+    // eventEmitter.emit(constants.events.app.STATUS_UPDATED, [
+    //   "Lucas",
+    //   "Melissa",
+    //   "Panqueca",
+    //   "Kit Kat",
+    // ]);
+    // setTimeout(() => {
+    //   eventEmitter.emit(constants.events.app.MESSAGE_RECEIVED, {
+    //     userName: "Lucas",
+    //     message: "Mensagem",
+    //   });
+    //   eventEmitter.emit(constants.events.app.MESSAGE_RECEIVED, {
+    //     userName: "Melissa",
+    //     message: "Mensagem",
+    //   });
+    //   eventEmitter.emit(constants.events.app.MESSAGE_RECEIVED, {
+    //     userName: "Kit Kat",
+    //     message: "Miau",
+    //   });
+    //   eventEmitter.emit(constants.events.app.MESSAGE_RECEIVED, {
+    //     userName: "Panqueca",
+    //     message: "Miau",
+    //   });
+    // }, 2000);
+    // setTimeout(() => {
+    //   eventEmitter.emit(constants.events.app.MESSAGE_RECEIVED, {
+    //     userName: "Lucas",
+    //     message: "Mensagem",
+    //   });
+    //   eventEmitter.emit(constants.events.app.MESSAGE_RECEIVED, {
+    //     userName: "Melissa",
+    //     message: "Mensagem",
+    //   });
+    //   eventEmitter.emit(constants.events.app.MESSAGE_RECEIVED, {
+    //     userName: "Kit Kat",
+    //     message: "Miau",
+    //   });
+    //   eventEmitter.emit(constants.events.app.MESSAGE_RECEIVED, {
+    //     userName: "Panqueca",
+    //     message: "Miau",
+    //   });
+    // }, 4000);
   }
 }
